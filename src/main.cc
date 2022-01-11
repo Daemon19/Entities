@@ -19,9 +19,10 @@ public:
 
         window_.Init("Hanya sebuah test", 0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP);
         renderer_.Init(window_);
-        entities_ = EntityPool(entity_count, window_.w(), window_.h());
+        entities_ = new EntityPool(entity_count, window_.w(), window_.h());
 
         Run();
+        delete entities_;
         SDL_Quit();
     }
 
@@ -29,7 +30,7 @@ private:
     bool running_ = true;
     Window window_;
     Renderer renderer_;
-    EntityPool entities_;
+    EntityPool *entities_ = nullptr;
 
     void Run()
     {
@@ -48,7 +49,7 @@ private:
             }
 
             renderer_.Fill(Color(20, 20, 30, 255));
-            entities_.UpdateAndDraw(renderer_);
+            entities_->UpdateAndDraw(renderer_);
             renderer_.UpdateDisplay();
         }
     }

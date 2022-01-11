@@ -9,7 +9,7 @@ EntityPool::EntityPool(int entity_count, int window_w, int window_h)
     for (int i = 0; i < entity_count; i++)
     {
         ResetEntity(entities_[i]);
-        entities_[i].y = randint(0, window_h_);
+        entities_[i].y += randint(window_h * 1, window_h * 2);
     }
 }
 
@@ -26,7 +26,7 @@ void EntityPool::UpdateAndDraw(Renderer &renderer)
         {
             ResetEntity(e);
         }
-        renderer.DrawFillRect(e, Color(150 * e.z, 255));
+        renderer.DrawFillRect(e, Color(100 * e.z, 255));
     }
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_NONE);
 }
@@ -37,5 +37,5 @@ void EntityPool::ResetEntity(Entity &e)
     e.y = window_h_;
     e.w = randint(kMinSize, kMaxSize);
     e.h = randint(kMinSize, kMaxSize);
-    e.z = randint(1, 10) * 0.1f;
+    e.z = randint(4, 10) * 0.1f;
 }

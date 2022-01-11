@@ -65,6 +65,6 @@ int main(int argc, char *argv[])
     if (argc == 2)
         Game game(atoi(argv[1]));
     else
-        Game game(100);
+        Game game(80);
     return 0;
 }

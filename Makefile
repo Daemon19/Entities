@@ -20,7 +20,7 @@ run: all
 	./$(BIN)
 
 release: clean
-release: CXXFLAGS=-Wall -O2 -DNDEBUG -std=c++2a -mwindows
+release: CXXFLAGS=-Wall -O2 -DNDEBUG -std=c++2a -mwindows -static-libgcc -static-libstdc++
 release: all
 
 -include $(DEPENDS)

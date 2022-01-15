@@ -1,5 +1,5 @@
 #include "rect.h"
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 Rect::Rect(float x, float y, int w, int h)
 {
